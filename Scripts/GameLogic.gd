@@ -53,6 +53,7 @@ func clear_values():
 	lose = false
 	currentTowny = null
 	gameProgress = 0
+	# BG music created from scratch on beepbox.co
 	$AudioStreamPlayer.play()
 	
 

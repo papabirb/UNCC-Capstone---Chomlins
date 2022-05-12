@@ -39,6 +39,10 @@ func sound(node, minPitch, maxPitch):
 	node.pitch_scale = rng.randf_range(minPitch, maxPitch)
 	node.play()
 
+func startBGM():
+	# BG music created from scratch on beepbox.co
+	$AudioStreamPlayer.play()
+
 # CLEAR VALUES
 func clear_values():
 	$AudioStreamPlayer.stop()
@@ -53,8 +57,6 @@ func clear_values():
 	lose = false
 	currentTowny = null
 	gameProgress = 0
-	# BG music created from scratch on beepbox.co
-	$AudioStreamPlayer.play()
 	
 
 

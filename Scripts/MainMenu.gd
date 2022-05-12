@@ -19,4 +19,5 @@ func _ready():
 func _on_Button_button_up():
 	GameLogic.sound($AudioStreamPlayer, 1, 1)
 	yield($AudioStreamPlayer, "finished")
+	GameLogic.startBGM()
 	GameLogic.switch_scenes(GameLogic.town)

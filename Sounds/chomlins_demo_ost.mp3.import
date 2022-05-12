@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/chomlins_demo_ost.mp3-e9aefb2c1ca1707f63f7353305cace8d.mp3str"
+
+[deps]
+
+source_file="res://Sounds/chomlins_demo_ost.mp3"
+dest_files=[ "res://.import/chomlins_demo_ost.mp3-e9aefb2c1ca1707f63f7353305cace8d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

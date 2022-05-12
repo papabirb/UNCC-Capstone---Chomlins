@@ -11,12 +11,23 @@ config_version=4
 [application]
 
 config/name="UNCC Capstone - Chomlins"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameLogic="*res://Scenes/GameLogic.tscn"
 
 [display]
 
 window/size/width=1440
 window/size/height=2560
+window/size/resizable=false
+window/size/test_width=720
+window/size/test_height=1280
+window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [physics]
 

@@ -1,0 +1,203 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Images/gameboy style bg.png" type="Texture" id=1]
+[ext_resource path="res://Images/basic bar.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Pet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/GameboyShell.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/HealthOrHappyBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Boss.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/BattleLogic.gd" type="Script" id=7]
+[ext_resource path="res://Sounds/blipSelect.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/explosion.wav" type="AudioStream" id=9]
+[ext_resource path="res://Images/pet_butt.png" type="Texture" id=10]
+[ext_resource path="res://Images/clean_butt_pressed.png" type="Texture" id=11]
+[ext_resource path="res://Images/feed_butt.png" type="Texture" id=12]
+[ext_resource path="res://Images/feed_butt_pressed.png" type="Texture" id=13]
+[ext_resource path="res://Images/endfight_butt.png" type="Texture" id=14]
+[ext_resource path="res://Images/endfight_butt_pressed.png" type="Texture" id=15]
+[ext_resource path="res://Images/clean_butt.png" type="Texture" id=16]
+[ext_resource path="res://Images/startfight_butt.png" type="Texture" id=17]
+[ext_resource path="res://Images/pet_butt_pressed.png" type="Texture" id=18]
+[ext_resource path="res://Images/play_butt.png" type="Texture" id=19]
+[ext_resource path="res://Images/play_butt_pressed.png" type="Texture" id=20]
+[ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=21]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource( 7 )
+damMod = 1.05
+turnsMax = 20
+shakeRange = 25
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 0, 1 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="CenterHealth" type="CenterContainer" parent="."]
+anchor_right = 1.0
+margin_top = 81.0
+margin_right = 1440.0
+margin_bottom = 287.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Boss Health" parent="CenterHealth" instance=ExtResource( 5 )]
+margin_left = 360.0
+margin_top = 38.0
+margin_right = 1080.0
+margin_bottom = 168.0
+
+[node name="CenterBoss" type="CenterContainer" parent="."]
+anchor_right = 1.0
+margin_top = 476.0
+margin_right = 1440.0
+margin_bottom = 660.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Boss" parent="CenterBoss" instance=ExtResource( 6 )]
+margin_left = 720.0
+margin_top = 92.0
+margin_right = 720.0
+margin_bottom = 92.0
+
+[node name="CenterHealth2" type="CenterContainer" parent="."]
+margin_left = 360.0
+margin_top = 1219.0
+margin_right = 1080.0
+margin_bottom = 1349.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Pet Health" parent="CenterHealth2" instance=ExtResource( 5 )]
+margin_right = 720.0
+
+[node name="CenterPet" type="CenterContainer" parent="."]
+anchor_right = 1.0
+margin_top = 1482.0
+margin_right = 1440.0
+margin_bottom = 1763.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Pet" parent="CenterPet" instance=ExtResource( 3 )]
+margin_left = 720.0
+margin_top = 140.0
+margin_right = 720.0
+margin_bottom = 140.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 62.0
+margin_top = 1908.0
+margin_right = 1377.0
+margin_bottom = 2188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 2
+
+[node name="Feed" type="TextureButton" parent="GridContainer"]
+margin_right = 658.0
+margin_bottom = 140.0
+disabled = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_disabled = ExtResource( 13 )
+
+[node name="Pet" type="TextureButton" parent="GridContainer"]
+margin_left = 658.0
+margin_right = 1316.0
+margin_bottom = 140.0
+disabled = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 18 )
+texture_disabled = ExtResource( 18 )
+
+[node name="Play" type="TextureButton" parent="GridContainer"]
+margin_top = 140.0
+margin_right = 658.0
+margin_bottom = 280.0
+disabled = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 20 )
+texture_disabled = ExtResource( 20 )
+
+[node name="Clean" type="TextureButton" parent="GridContainer"]
+margin_left = 658.0
+margin_top = 140.0
+margin_right = 1316.0
+margin_bottom = 280.0
+disabled = true
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 11 )
+texture_disabled = ExtResource( 11 )
+
+[node name="DivTextArea" type="Sprite" parent="."]
+self_modulate = Color( 0.192157, 0.54902, 0.313726, 1 )
+position = Vector2( 720.5, 1049.5 )
+scale = Vector2( 1.99861, 2.06923 )
+texture = ExtResource( 2 )
+
+[node name="Event Text" type="Label" parent="DivTextArea"]
+margin_left = -210.0
+margin_top = -65.0
+margin_right = 329.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 21 )
+text = "The villager throws mud on your pet!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Turn Num" type="Label" parent="DivTextArea"]
+margin_left = -325.0
+margin_top = -65.0
+margin_right = -210.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 21 )
+text = "#/#
+"
+align = 1
+valign = 1
+
+[node name="StartFight" type="TextureButton" parent="."]
+visible = false
+margin_left = 61.9698
+margin_top = 969.0
+margin_right = 1376.97
+margin_bottom = 1109.0
+texture_normal = ExtResource( 17 )
+
+[node name="EndFight" type="TextureButton" parent="."]
+visible = false
+margin_left = 61.97
+margin_top = 969.0
+margin_right = 315.97
+margin_bottom = 999.0
+disabled = true
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_disabled = ExtResource( 15 )
+
+[node name="GameboyShell" parent="." instance=ExtResource( 4 )]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="DummySprite" type="Sprite" parent="."]
+
+[node name="HurtSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[connection signal="button_up" from="GridContainer/Feed" to="." method="_on_Feed_button_up"]
+[connection signal="button_up" from="GridContainer/Pet" to="." method="_on_Pet_button_up"]
+[connection signal="button_up" from="GridContainer/Play" to="." method="_on_Play_button_up"]
+[connection signal="button_up" from="GridContainer/Clean" to="." method="_on_Clean_button_up"]
+[connection signal="button_up" from="StartFight" to="." method="_on_StartFight_button_up"]
+[connection signal="button_up" from="EndFight" to="." method="_on_EndFight_button_up"]
+
+[editable path="CenterBoss/Boss"]
+[editable path="CenterPet/Pet"]
